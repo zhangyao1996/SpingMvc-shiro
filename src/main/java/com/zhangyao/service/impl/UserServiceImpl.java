@@ -2,17 +2,15 @@ package com.zhangyao.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.zhangyao.dao.UserDao;
 import com.zhangyao.entity.Permission;
 import com.zhangyao.entity.Role;
 import com.zhangyao.entity.User;
 import com.zhangyao.service.PasswordHelper;
 import com.zhangyao.service.UserService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author zhangyao

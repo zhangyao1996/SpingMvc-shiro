@@ -66,9 +66,10 @@
 
     <!-- 根据角色id查询permission表中属于此角色节点的子节点权限 -->
     <select id="findPermissionByRoleId" parameterType="Long" resultType="com.zhangyao.entity.Permission">
-        SELECT id, description, rid
-        FROM sys_permissions
-        WHERE rid = #{id};
+        SELECT sp.id, sp.description, sp.rid
+        FROM sys_permissions sp,sys_roles_permissions srp
+        WHERE srp.role_id = #{id} 
+		AND srp.permission_id=sp.id;
     </select>
 
     <!-- 更新当前角色数据 -->
