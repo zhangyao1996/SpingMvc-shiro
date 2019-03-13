@@ -61,9 +61,9 @@ function permissionBtn(id) {
                 rootPId: -1,// 根节点ID
             }
         },
-        callback: {
+       /* callback: {
             onCheck: zTreeOnCheck // 点击复选框（选中或未选中），触发的回调函数
-        }
+        }*/
     };
 
     function zTreeOnCheck(event, treeId, treeNode) {
@@ -73,16 +73,20 @@ function permissionBtn(id) {
         console.log(checkedNodes);
         if (treeNode.checked) {
             // 展示被选中的数据
+        	//alert("111");
             checkedNodes.forEach(row => {
                 $('.title .info').append('id:' + row.id + ',name:' + row.name + ',pid:' + row.pid + ',parent:' + row.parent + ' ----');
             });
         } else {
             // 展示被选中的数据
+        	//alert("222");
             checkedNodes.forEach(row => {
                 $('.title .info').append('id:' + row.id + ',name:' + row.name + ',pid:' + row.pid + ',parent:' + row.parent + ' ----');
             });
         }
     }
+    
+    
 
     $(function () {
         // 加载后端构建的ZTree树（节点的数据格式已在后端格式化好了）
@@ -104,7 +108,9 @@ function permissionBtn(id) {
     // 处理哪些节点应该被选中
     function checkNodes() {
         var zTree = $.fn.zTree.getZTreeObj("tree");// 获取zTree对象
-
+        
+      
+        
         var thisPermissions = findPermissionByRoleId(id); // 根据当前角色id得到其所关联的权限数据
 
         var permissionNode = []; // 初始化权限（子节点）被选中的列表(父节点必选)
@@ -122,6 +128,12 @@ function permissionBtn(id) {
         checkedNodes.forEach(row => {
             $('.title .info').append('id:' + row.id + ',name:' + row.name + ',pid:' + row.pid + ',parent:' + row.parent + ' ----');
         });
+        
+        zTree.setChkDisabled(zTree.getNodeByParam("id",id),true);//设置禁用的复选框节点,只读属性 
+        permissionNode.forEach(node_role => {
+           zTree.setChkDisabled(zTree.getNodeByParam("id",node_role),true); //设置禁用的复选框节点,只读属性  
+        });
+       
     }
 
     $("#permission-modal .modal-body .id").val(id); // 将当前操作用户的id作为模态框中的一个属性值
