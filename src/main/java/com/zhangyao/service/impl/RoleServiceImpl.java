@@ -75,4 +75,10 @@ public class RoleServiceImpl implements RoleService {
 		return roleDao.findAll();
 	}
 
+	@Override
+	public List<Role> findRolesByPid(Long id) {
+		// TODO Auto-generated method stub
+		return roleDao.findRolesByPid(id);
+	}
+
 }

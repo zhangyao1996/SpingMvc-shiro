@@ -54,4 +54,11 @@ public class TreeEntity implements Serializable {
     public void setPid(Long pid) {
         this.pid = pid;
     }
+
+	@Override
+	public String toString() {
+		return "TreeEntity [id=" + id + ", name=" + name + ", isParent=" + isParent + ", pid=" + pid + "]";
+	}
+    
+    
 }

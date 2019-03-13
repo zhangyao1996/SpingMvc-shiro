@@ -54,5 +54,12 @@ public interface RoleService extends BaseService<Role> {
      * @param role
      */
     void updateUserRole_Id(Role role);
+    
+    /**
+     * 通过父节点获取roleList
+     * @param id
+     * @return
+     */
+    List<Role> findRolesByPid(Long id);
 
 }

@@ -153,9 +153,9 @@
                     <form class="form-horizontal">
                         <input class="id" name="id" value="" hidden="hidden">
                         <!-- 角色-权限的Tree树 -左侧 -->
-                        <div class="zTreeDemoBackground" style="float: left;">
+                       <!--  <div class="zTreeDemoBackground" style="float: left;">
                             <ul id="tree-create" class="ztree"></ul>
-                        </div>
+                        </div> -->
                         <!-- 选中节点信息展示 -右侧 -->
                         <div style="float: right;width: 86%;margin-top: 5%;margin-right: -31%;">
                             <div class="form-group">
@@ -170,9 +170,9 @@
                                     <input type="text" class="form-control description" name="description">
                                 </div>
                             </div>
-                            <div class="form-group" style="margin-top: 34px;">
+                            <!-- <div class="form-group" style="margin-top: 34px;">
                                 <lable>新创建的权限将存在于被勾选节点的最低一层级</lable>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>

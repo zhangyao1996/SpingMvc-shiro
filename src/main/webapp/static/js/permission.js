@@ -65,7 +65,8 @@ function permissionBtn(id) {
             onCheck: zTreeOnCheck //点击复选框（选中或未选中），触发的回调函数,显示节点详细信息
         }
     };
-
+    
+    //右边显示数据
     function zTreeOnCheck(event, treeId, treeNode) {
         $('.title .info').text(''); //先清空textarea
         var zTree = $.fn.zTree.getZTreeObj("tree");//获取zTree对象
@@ -83,7 +84,7 @@ function permissionBtn(id) {
             });
         }
     }
-
+    //左边显示数据
     $(function () {
         //加载后端构建的ZTree树（节点的数据格式已在后端格式化好了）
         $.ajax({
@@ -156,9 +157,8 @@ function surePermission() {
             parents: parents
         }),
         success: (data) => {
-            if (data.success) {
+        	 alert(data.message);
                 window.location.reload();
-            }
         },
         error: (data) => {
             alert(data.message);
@@ -195,11 +195,9 @@ $(".status-sure").click(function () {
             id: $("#status-modal .id").text(),
             available: available
         }),
-        success: (result) => {
-            if (result.success) {
+        success: (data) => {
+        	 alert(data.message);
                 window.location.reload();
-            }
-            console.log(result);
         },
         error: (data) => {
             alert(data.message);
@@ -214,9 +212,8 @@ function deleteRole(id) {
             url: '../../permissions/delete.do?id=' + id,
             type: 'get',
             success: (data) => {
-                if (data.success) {
+            	 alert(data.message);
                     window.location.reload();
-                }
             },
             error: (data) => {
                 alert(data.message);
@@ -226,7 +223,7 @@ function deleteRole(id) {
 }
 
 //添加
-function create(id) {
+function create() {
     $('#create-modal .modal-body .role').val('');
     $('#create-modal .modal-body .description').val('');
     $("#create-modal").modal('show');
@@ -234,39 +231,39 @@ function create(id) {
     /**
      * Tree树控件
      */
-    var setting = {
-        view: {
-            selectedMulti: false
-        },
-        check: {
-            enable: true,
-            chkStyle: "radio"
-        },
-        data: {
-            simpleData: {
-                enable: true,//是否采用简单数据模式
-                idKey: "id",//树节点ID名称
-                pIdKey: "pid",//父节点ID名称
-                rootPId: -1,//根节点ID
-            }
-        }
-    };
+//    var setting = {
+//        view: {
+//            selectedMulti: false
+//        },
+//        check: {
+//            enable: true,
+//            chkStyle: "radio"
+//        },
+//        data: {
+//            simpleData: {
+//                enable: true,//是否采用简单数据模式
+//                idKey: "id",//树节点ID名称
+//                pIdKey: "pid",//父节点ID名称
+//                rootPId: -1,//根节点ID
+//            }
+//        }
+//    };
 
-    $(function () {
-        //加载后端构建的ZTree树（节点的数据格式已在后端格式化好了）
-        $.ajax({
-            url: '../../permissions/getRolesZTree.do',
-            type: 'get',
-            dataType: "json",
-            success: (data) => {
-                console.log(data);
-                $.fn.zTree.init($("#tree-create"), setting, data);//初始化树节点时，添加同步获取的数据
-            },
-            error: () => {
-                alert('error!');
-            }
-        });
-    });
+//    $(function () {
+//        //加载后端构建的ZTree树（节点的数据格式已在后端格式化好了）
+//        $.ajax({
+//            url: '../../permissions/getRolesZTree.do',
+//            type: 'get',
+//            dataType: "json",
+//            success: (data) => {
+//                console.log(data);
+//                $.fn.zTree.init($("#tree-create"), setting, data);//初始化树节点时，添加同步获取的数据
+//            },
+//            error: () => {
+//                alert('error!');
+//            }
+//        });
+//    });
 }
 
 //添加--确定按钮
@@ -274,16 +271,16 @@ $(".create-sure").click(function () {
     var permission = $('#create-modal .modal-body .permission').val();
     var description = $('#create-modal .modal-body .description').val();
 
-    var zTree = $.fn.zTree.getZTreeObj("tree-create");//获取zTree对象
-    let checkedNodes = zTree.getCheckedNodes();
-    var rid = 0; //如果没有勾选角色，默认是0
-    if (checkedNodes.length > 0){
-        //checkedNodes是被勾选数据的集合数组，且是被如果有父节点被选中，那么数组中这个父节点一定在其被选子节点的后面，取数组最后位置得索引即可得到最底层节点的数据
-        rid = checkedNodes[checkedNodes.length - 1].id
-    }
-    console.log(permission);
-    console.log(description);
-    console.log(rid);
+//    var zTree = $.fn.zTree.getZTreeObj("tree-create");//获取zTree对象
+//    let checkedNodes = zTree.getCheckedNodes();
+//    var rid = 0; //如果没有勾选角色，默认是0
+//    if (checkedNodes.length > 0){
+//        //checkedNodes是被勾选数据的集合数组，且是被如果有父节点被选中，那么数组中这个父节点一定在其被选子节点的后面，取数组最后位置得索引即可得到最底层节点的数据
+//        rid = checkedNodes[checkedNodes.length - 1].id
+//    }
+//    console.log(permission);
+//    console.log(description);
+//    console.log(rid);
     //创建用户
     $.ajax({
         url: '../../permissions/create.do',
@@ -293,12 +290,11 @@ $(".create-sure").click(function () {
         data: JSON.stringify({
             permission: permission,
             description: description,
-            rid: rid
+        //    rid: rid
         }),
         success: (data) => {
-            if (data.success) {
+        	  alert(data.message);
                 window.location.reload();
-            }
         },
         error: (data) => {
             alert(data.message);
@@ -338,9 +334,8 @@ $(".edit-sure").click(() => {
                 description: description
             }),
             success: (data) => {
-                if (data.success) {
+            	  alert(data.message);
                     window.location.reload();
-                }
             },
             error: (data) => {
                 alert(data.message);

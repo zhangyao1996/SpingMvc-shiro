@@ -7,8 +7,8 @@
     <!-- 创建权限 -->
     <insert id="create" parameterType="com.zhangyao.entity.Permission">
         INSERT INTO
-        sys_permissions(permission, description, available,rid)
-        VALUES(#{permission}, #{description}, #{available}, #{rid})
+        sys_permissions(permission, description, available)
+        VALUES(#{permission}, #{description}, #{available})
     </insert>
 
     <!-- 删除与权限关联的相关表数据 -->
@@ -37,9 +37,9 @@
             <if test="description != null">
                 description = #{description},
             </if>
-            <if test="rid != null">
+           <!--  <if test="rid != null">
                 rid = #{rid},
-            </if>
+            </if> -->
             <if test="available != null">
                 available = #{available},
             </if>

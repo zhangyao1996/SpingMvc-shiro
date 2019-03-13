@@ -33,7 +33,7 @@ function findRoles(username) {
             obj = result;
         },
         error: () => {
-            alert('error!');
+            alert('没有权限!');
         }
     });
     console.log(obj);
@@ -165,9 +165,8 @@ function surePermission() {
             names: names
         }),
         success: (data) => {
-            if (data.success) {
+        	 alert(data.message);
                 window.location.reload();
-            }
         },
         error: (data) => {
             alert(data.message);
@@ -209,11 +208,9 @@ $(".status-sure").click(function () {
             password: $("#status-modal .password").text(),
             locked: locked
         }),
-        success: (result) => {
-            if (result.success) {
+        success: (data) => {
+        	 alert(data.message);
                 window.location.reload();
-            }
-            console.log(result);
         },
         error: (data) => {
             alert(data.message);
@@ -258,9 +255,8 @@ $(".create-sure").click(function () {
                 password: password
             }),
             success: (data) => {
-                if (data.success){
+            	 alert(data.message);
                     window.location.reload();
-                }
             },
             error: (data) => {
                 alert(data.message);
@@ -278,9 +274,8 @@ $(".create-sure").click(function () {
                 password: password
             }),
             success: (data) => {
-                if (data.success){
+            	 alert(data.message);
                     window.location.reload();
-                }
             },
             error: (data) => {
                 alert(data.message);
@@ -296,9 +291,8 @@ function deleteUser(id){
             url: '../../user/delete.do?id='+id,
             type: 'get',
             success: (data) => {
-                if (data.success){
+            	 alert(data.message);
                     window.location.reload();
-                }
             },
             error: (data) => {
                 alert(data.message);

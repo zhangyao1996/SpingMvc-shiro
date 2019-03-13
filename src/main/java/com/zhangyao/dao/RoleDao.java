@@ -32,4 +32,6 @@ public interface RoleDao {
 	void deleteAllRolePermissions(Long id);
 
 	void updateUserRole_Id(Role role);
+
+	List<Role> findRolesByPid(Long id);
 }

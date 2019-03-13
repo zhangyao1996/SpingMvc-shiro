@@ -106,4 +106,10 @@ public class RoleDaoImpl implements RoleDao {
 		roleMapper.updateUserRole_Id(role);
 	}
 
+	@Override
+	public List<Role> findRolesByPid(Long id) {
+		// TODO Auto-generated method stub
+		return roleMapper.findRolesByPid(id);
+	}
+
 }
