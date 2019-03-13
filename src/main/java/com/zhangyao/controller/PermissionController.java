@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zhangyao.entity.Permission;
 import com.zhangyao.entity.Role;
 import com.zhangyao.entity.TreeEntity;
 import com.zhangyao.service.PermissionService;
@@ -139,12 +140,94 @@ public class PermissionController {
                 }
             }
             System.out.println(dataMap);
-            map.put("success", "更新成功");
+            map.put("message", "更新成功");
             return map;
         } catch (Exception e) {
             e.printStackTrace();
-            map.put("false", "更新失败");
+            map.put("message", "更新失败");
             return map;
+        }
+        
+    }
+    
+    /**
+     * 更新当前权限数据
+     *
+     * @param permission
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/update")
+    public Map update(@RequestBody Permission permission) {
+    	Map map=new HashMap<>();
+        try {
+            permissionService.update(permission);
+            map.put("message", "数据更新成功");
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("message", "数据更新失败");
+            return map;
+        }
+    }
+
+    /**
+     * 删除当前权限数据
+     *
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/delete")
+    public Map delete(@RequestParam("id") Long id) {
+    	Map map=new HashMap<>();
+        try {
+            permissionService.delete(id);
+            map.put("message", "数据删除成功");
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("message", "数据删除失败");
+            return map;
+        }
+    }
+
+    
+    /**
+     * 创建权限
+     *
+     * @param permission
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/create")
+    public Map create(@RequestBody Permission permission) {
+    	Map map=new HashMap<>();
+        try {
+            permissionService.create(permission);
+            map.put("message", "权限创建成功");
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("message", "权限创建失败");
+            return map;
+        }
+    }
+
+    /**
+     * 根据id查询权限数据
+     *
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/findById")
+    public Permission findById(@RequestParam("id") Long id) {
+        try {
+            return permissionService.findById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

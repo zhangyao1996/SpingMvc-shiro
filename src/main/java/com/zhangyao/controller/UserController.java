@@ -74,11 +74,10 @@ public class UserController {
 		Map map = new HashMap<>();
 		try {
 			userService.create(user);
-			map.put("success", "创建用户成功");
+			map.put("message", "创建成功");
 			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
-			map.put("message", "发生未知错误");
 			map.put("message", "发生未知错误");
 			return map;
 		}
@@ -97,7 +96,7 @@ public class UserController {
 		Map map = new HashMap<>();
 		try {
 			userService.update(user);
-			map.put("success", "更新创建用户成功");
+			map.put("message", "更新成功");
 			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +118,7 @@ public class UserController {
 		Map map = new HashMap<>();
 		try {
 			userService.delete(id);
-			map.put("success", "删除用户成功");
+			map.put("message", "删除成功");
 			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -202,7 +201,7 @@ public class UserController {
 
 			System.out.println(role_id);
 			System.out.println(dataMap);
-			map.put("success", "更新用户成功");
+			map.put("message", "更新成功");
 			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
