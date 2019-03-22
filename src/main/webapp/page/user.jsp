@@ -2,11 +2,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
     <title>用户信息</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/lib/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/lib/css/demo.css"/>
+  <%--   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/lib/css/demo.css"/> --%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/lib/css/metroStyle/metroStyle.css"/>
 </head>
 <body>
@@ -47,9 +48,12 @@
                     <tr>
                         <th>编号</th>
                         <th>用户名</th>
-                        <th>密码</th>
-                        <th>盐值</th>
+                       <!--  <th>密码</th>
+                        <th>盐值</th> -->
                         <th>角色列表</th>
+                   <!--      <th>Host</th>
+                        <th>地址</th>
+                        <th>登陆时间</th> -->
                         <th>操作</th>
                     </tr>
                     <tbody>
@@ -57,9 +61,12 @@
                         <tr>
                             <td>${user.id}</td>
                             <td>${user.username}</td>
-                            <td>${user.password}</td>
-                            <td>${user.salt}</td>
+                           <%--  <td>${user.password}</td>
+                            <td>${user.salt}</td> --%>
                             <td>${user.roleId}</td>
+                 <%--            <td>${user.host}</td>
+                            <td>${user.address}</td>
+                            <td><fmt:formatDate value="${user.endTime}" pattern="yyyy年MM月dd日HH点mm分ss秒" /></td> --%>
                             <td hidden="hidden">${user.locked}</td>
                             <td>
                                 <input type="button" class="btn btn-primary btn-sm"

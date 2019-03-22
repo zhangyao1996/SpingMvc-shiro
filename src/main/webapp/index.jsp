@@ -40,10 +40,10 @@
         </div>
         <div style="margin-left: 21%;margin-right: 16%;margin-top: -6%;" class="text-center">
             <h3>
-                SpringMVC + Mybatis + SpringMVC + Shiro 整合案例
+                SpringMVC + Mybatis + Shiro + Ztree整合案例
             </h3>
             <div style="margin-top: 90px;float: right;font-size: 18px;margin-right: 43px;">
-                -Author -- TyCoding&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                -CopyFrom TyCoding &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <br/>
                 -Blog: <a href="http://www.tycoding.cn" target="_blank">www.tycoding.cn</a>
             </div>

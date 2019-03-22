@@ -52,7 +52,7 @@
             <param-value>classpath:spring/springmvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-        <async-supported>true</async-supported>
+        <async-supported>true</async-supported><!-- 支持异步处理，servlet3.0新特性 -->
     </servlet>
     <servlet-mapping>
         <servlet-name>spring</servlet-name>

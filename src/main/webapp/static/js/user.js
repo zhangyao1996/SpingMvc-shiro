@@ -169,7 +169,7 @@ function surePermission() {
                 window.location.reload();
         },
         error: (data) => {
-            alert(data.message);
+            alert("么有权限");
         }
     })
 }
@@ -275,7 +275,7 @@ $(".create-sure").click(function () {
             }),
             success: (data) => {
             	 alert(data.message);
-                    window.location.reload();
+            	 window.location.reload();
             },
             error: (data) => {
                 alert(data.message);
