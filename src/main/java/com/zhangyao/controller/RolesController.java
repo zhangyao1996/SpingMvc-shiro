@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zhangyao.entity.Permission;
 import com.zhangyao.entity.Role;
+import com.zhangyao.entity.Tree;
 import com.zhangyao.entity.TreeEntity;
 import com.zhangyao.service.RoleService;
+import com.zhangyao.utils.TreeUtils;
 
 /**
  * @author zhangyao
@@ -29,6 +31,24 @@ import com.zhangyao.service.RoleService;
 public class RolesController {
 	@Autowired
 	private RoleService roleService;
+	
+	
+	
+//	@RequestMapping("/findRoles")
+//	@ResponseBody
+//	public List<Tree<Role>> getAllRoles(){
+//		List<Role> roleList=roleService.findAll();
+//		List<Tree<Role>> treeList=new ArrayList<>();
+//		for (Role role : roleList) {
+//			Tree<Role> tree=new Tree<>();
+//			tree.setId(role.getId());
+//			tree.setpId(role.getPid());
+//			tree.setName(role.getDescription());
+//			treeList.add(tree);
+//		}
+//		return	TreeUtils.build2(treeList);
+//		//return TreeUtils.build(treeList);
+//	}
 
 	/**
 	 * 根据id查询角色数据

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.Logical;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +35,9 @@ public class UserController {
 
 	@Autowired
 	private RoleService roleService;
+	
 
+	
 	/**
 	 * 查询用户列表页面
 	 *
@@ -45,7 +46,8 @@ public class UserController {
 	 */
 	@RequestMapping("/findAll")
 	public String findAllUser(Model model) {
-		model.addAttribute("userList", userService.findAll());
+		List<User> userList=userService.findAll();
+		model.addAttribute("userList", userList);
 		return "page/user";
 	}
 
@@ -69,7 +71,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping("/create")
-	@RequiresRoles(value = { "admin", "personnel-resource" }, logical = Logical.OR)
+	@RequiresRoles(value = { "admin-admin", "personnel-resource" }, logical = Logical.OR)
 	public Map create(@RequestBody User user) {
 		Map map = new HashMap<>();
 		try {
@@ -91,7 +93,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
-	@RequiresRoles(value = { "admin", "personnel-resource" }, logical = Logical.OR)
+	@RequiresRoles(value = { "admin-admin", "personnel-resource" }, logical = Logical.OR)
 	public Map update(@RequestBody User user) {
 		Map map = new HashMap<>();
 		try {
@@ -113,7 +115,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping("/delete")
-	@RequiresRoles(value = { "admin", "personnel-resource" }, logical = Logical.OR)
+	@RequiresRoles(value = { "admin-admin", "personnel-resource" }, logical = Logical.OR)
 	public Map delete(@RequestParam("id") Long id) {
 		Map map = new HashMap<>();
 		try {
@@ -135,8 +137,8 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping("/findRoles")
-	@RequiresRoles(value = { "admin" }, logical = Logical.OR)
-	@RequiresPermissions(value = { "role:view", "role:*" }, logical = Logical.OR)
+	//@RequiresRoles(value = { "admin", "personnel-resource" }, logical = Logical.OR)
+	//@RequiresPermissions(value = { "role:view", "role:*" }, logical = Logical.OR)
 	public List<Role> findRoles(String username) {
 		return userService.findRoles(username);
 	}
@@ -159,6 +161,7 @@ public class UserController {
 	 *         {...}}}
 	 */
 	@ResponseBody
+	@RequiresRoles(value = { "admin-admin", "personnel-resource" }, logical = Logical.OR)
 	@RequestMapping(value = "/updateUserRoles", method = RequestMethod.POST)
 	public Map updateUserRoles(@RequestBody Map<String, Object> dataMap) {
 		Map map = new HashMap<>();
@@ -218,6 +221,7 @@ public class UserController {
 	 * @return
 	 */
 	@ResponseBody
+	//@RequiresRoles(value = { "admin" }, logical = Logical.OR)
 	@RequestMapping("/getZTreeForUserRoles")
 	public List<TreeEntity> getTreeForUserRoles() {
 		try {

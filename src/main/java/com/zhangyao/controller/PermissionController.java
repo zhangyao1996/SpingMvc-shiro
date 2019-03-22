@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +40,7 @@ public class PermissionController {
      * @param model
      * @return
      */
-    @RequiresRoles(value = {"admin"})//授权
+    //@RequiresRoles(value = {"admin","personnel-resource"},logical=Logical.OR)//授权
     @RequestMapping("/findAll")
     public String findAll(Model model) {
         model.addAttribute("permissionsList", permissionService.findAll());
